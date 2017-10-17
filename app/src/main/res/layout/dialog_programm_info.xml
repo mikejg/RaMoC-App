@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="org.gareiss.mike.ramoc.tv.Dialog_ProgrammInfo" >
+
+        <!--
+           <ScrollView
+                    android:id="@+id/tv_ProgrammDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    -->
+        <LinearLayout
+            android:id="@+id/pr_layout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btn_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aufnehmen"
+                android:onClick="button_Record_Clicked" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btn_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timer"
+                android:onClick="btn_Timer_Clicked" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/pr_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/pr_layout"
+            />
+        <!--
+                    </LinearLayout>
+                </ScrollView>
+        -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Start"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/pr_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+

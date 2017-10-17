@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_activity__tv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="org.gareiss.mike.ramoc.tv.Activity_TV"
+    tools:showIn="@layout/app_bar_activity_tv">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/tv_ChannelList"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:transcriptMode="disabled"
+            android:layout_marginEnd="5dp"
+            />
+
+        <ListView
+            android:id="@+id/tv_ProgrammList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:transcriptMode="disabled"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

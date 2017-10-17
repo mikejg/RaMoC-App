@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">RaMoC</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity__movie_list">Filme</string>
+    <string name="title_activity__settings">Settings</string>
+    <string name="title_activity__movie">Film</string>
+    <string name="title_activity__tvshow_list">Serien</string>
+    <string name="title_activity__tvshow">Activity_TVShow</string>
+
+    <string name="ch_no_transmission">No transmission</string>
+
+    <string name="err_auth">Access denied</string>
+    <string name="err_inv">Invalid response from server</string>
+    <string name="err_connect">Can\'t connect to server</string>
+    <string name="err_con_lost">Lost connection to server</string>
+
+    <string name="pr_all_channels">All channels</string>
+    <string name="title_activity__tv">TV</string>
+    <string name="title_activity_dialog__scheduled__records">Geplante Aufnahmen</string>
+
+    <string name="title">Titel</string>
+    <string name="subtitle">Untertitel</string>
+    <string name="summary">Summary</string>
+    <string name="channel">Sender</string>
+    <string name="duration">Dauer</string>
+    <string name="date">Datum</string>
+    <string name="time">Zeit</string>
+    <string name="description">Beschreibung</string>
+    <string name="is_series_recording">wiederkehrende Aufnahme</string>
+    <string name="is_timer_recording">zeitliche Aufnahme</string>
+    <string name="today">Heute</string>
+    <string name="tomorrow">Morgen</string>
+    <string name="in_2_days">in 2 Tagen</string>
+    <string name="monday">Montag</string>
+    <string name="tuesday">Dienstag</string>
+    <string name="wednesday">Mittwoch</string>
+    <string name="thursday">Mittwoch</string>
+    <string name="friday">Freitag</string>
+    <string name="saturday">Samstag</string>
+    <string name="sunday">Sonntag</string>
+    <string name="yesterday">Gestern</string>
+    <string name="two_days_ago">Vorgestern</string>
+    <string name="minutes">%d min</string>
+    <string name="recording_file_missing">keine Datei vorhanden</string>
+    <string name="recording_canceled">Aufzeichnung abgebrochen</string>
+    <string name="recording_time_missed"></string>
+    <string name="recording_file_invalid">Datei unbrauchbar</string>
+    <string name="title_activity__music">Music</string>
+    <string name="title_activity__archive">Activity_Archive</string>
+    <string name="title_activity_dialog__archive">Dialog_Archive</string>
+    <string name="title_activity_dialog__tvhead_end">TVHeadEnd</string>
+    <string name="title_activity_dialog__smb">SMB</string>
+    <string name="title_activity_dialog2015">Prime Time 20:15</string>
+
+</resources>

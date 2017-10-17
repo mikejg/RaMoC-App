@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.gareiss.mike.ramoc">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".RaMoCApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".movie.Activity_MovieList"
+            android:label="@string/title_activity__movie_list"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".settings.Activity_Settings"
+            android:label="@string/title_activity__settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".tcp.TCPService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".movie.Activity_Movie"
+            android:label="@string/title_activity__movie"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".tvshow.Activity_TVShowList"
+            android:label="@string/title_activity__tvshow_list"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".tvshow.Activity_TVShow"
+            android:label="@string/title_activity__tvshow"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".tv.htsp.HTSService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".tv.Activity_TV"
+            android:label="@string/title_activity__tv"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".tv.Dialog_ProgrammInfo"
+            android:label="Programm Info"
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".settings.Dialog_RaMoC_IP"
+            android:label="RaMoC IP"
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".Dialog_Scheduled_Records"
+            android:label="@string/title_activity_dialog__scheduled__records"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".settings.Dialog_Unsorted_Files"
+            android:label="Unsortierte Files"
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".settings.Dialog_Search_Results"
+            android:label="Suchergebnisse"
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".settings.Dialog_Selection"
+            android:label="Auswahl"
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".tv.Dialog_Records"
+            android:label="Aufnahmen"
+            android:theme="@style/mDialog" />
+        <!-- android:theme="@style/AppTheme.NoActionBar"></activity> -->
+        <activity
+            android:name=".music.Activity_Music"
+            android:label="@string/title_activity__music"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".movie.Activity_Archive"
+            android:label="@string/title_activity__archive"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".movie.Dialog_Archive"
+            android:label="@string/title_activity_dialog__archive"
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".settings.Dialog_TVHeadEnd"
+            android:label="@string/title_activity_dialog__tvhead_end"
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".settings.Dialog_SMB"
+            android:label="@string/title_activity_dialog__smb"
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".tv.Dialog2015"
+            android:label="@string/title_activity_dialog2015"
+            android:theme="@style/mDialog" />
+    </application>
+
+</manifest>

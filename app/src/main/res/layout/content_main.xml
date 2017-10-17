@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="org.gareiss.mike.ramoc.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <View
+        android:id="@+id/main_View_Gray"
+        android:layout_width="fill_parent"
+        android:layout_height="120dip"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#c0c0c0c0" />
+
+    <LinearLayout
+        android:id="@+id/main_LinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+    <ImageButton
+        android:id="@+id/main_ImageButton_Movie"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#00c0c0c0"
+        android:alpha="0.9"
+        android:scaleType="fitCenter"
+        android:src="@drawable/blackmovie"
+        android:onClick="button_Movie_Click" />
+
+        <ImageButton
+            android:id="@+id/main_ImageButton_TVShow"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#00c0c0c0"
+            android:alpha="0.9"
+            android:scaleType="fitCenter"
+            android:src="@drawable/blackserie"
+            android:onClick="button_TVShow_Click" />
+
+        <ImageButton
+            android:id="@+id/main_ImageButton_TV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#00c0c0c0"
+            android:alpha="0.9"
+            android:scaleType="fitCenter"
+            android:src="@drawable/blacktv"
+            android:onClick="button_TV_Click" />
+
+        <ImageButton
+            android:id="@+id/main_ImageButton_Archive"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#00c0c0c0"
+            android:alpha="0.9"
+            android:scaleType="fitCenter"
+            android:src="@drawable/blackarchiv"
+            android:onClick="button_Archive_Click" />
+
+        <ImageButton
+            android:id="@+id/button_Music"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#00c0c0c0"
+            android:scaleType="fitCenter"
+            android:src="@drawable/blackmusik"
+            android:alpha="0.9"
+            android:onClick="button_Music_Click" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/wallpaper"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/main_View_Gray"
+        android:layout_marginTop="120dp" />
+</RelativeLayout>

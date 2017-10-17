@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/fsk0"
+            android:title="FSK 0" />
+        <item
+            android:id="@+id/fsk6"
+            android:title="FSK 6" />
+        <item
+            android:id="@+id/fsk12"
+            android:title="FSK12" />
+        <item
+            android:id="@+id/fsk16"
+            android:title="FSK 16" />
+        <item
+            android:id="@+id/fsk18"
+            android:title="FSK 18" />
+    </group>
+
+    <item android:title="Genre">
+        <menu>
+            <item
+                android:id="@+id/science_fiction"
+                android:title="Science Fiction" />
+            <item
+                android:id="@+id/thriller"
+                android:title="Thriller" />
+            <item
+                android:id="@+id/mystery"
+                android:title="Mystery" />
+            <item
+                android:id="@+id/horror"
+                android:title="Horror" />
+            <item
+                android:id="@+id/drama"
+                android:title="Drama" />
+            <item
+                android:id="@+id/liebesfilm"
+                android:title="Liebesfilm" />
+            <item
+                android:id="@+id/krimi"
+                android:title="Krimi" />
+            <item
+                android:id="@+id/action"
+                android:title="Action" />
+            <item
+                android:id="@+id/abenteuer"
+                android:title="Abenteuer" />
+            <item
+                android:id="@+id/kriegsfilm"
+                android:title="Kriegsfilm" />
+            <item
+                android:id="@+id/fantasy"
+                android:title="Fantasy" />
+            <item
+                android:id="@+id/komoedie"
+                android:title="Komödie" />
+            <item
+                android:id="@+id/historie"
+                android:title="Historie" />
+            <item
+                android:id="@+id/familie"
+                android:title="Familie" />
+            <item
+                android:id="@+id/animation"
+                android:title="Animation" />
+            <item
+                android:id="@+id/western"
+                android:title="Western" />
+            <item
+                android:id="@+id/dokumentar"
+                android:title="Dokumentarfilm" />
+            <item
+                android:id="@+id/musik"
+                android:title="Musik" />
+            <item
+                android:id="@+id/foreign"
+                android:title="Foreign" />
+            <item
+                android:id="@+id/scifi"
+                android:title="Sci-Fi" />
+        </menu>
+    </item>
+
+</menu>

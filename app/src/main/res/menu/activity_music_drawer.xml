@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Favoriten"
+            android:title="Favoriten" />
+        <item
+            android:id="@+id/nav_Random"
+            android:title="Zufall" />
+        <item
+            android:id="@+id/nav_Sampler"
+            android:title="Sampler" />
+        <item
+            android:id="@+id/nav_ABC"
+            android:title="ABC" />
+        <item
+            android:id="@+id/nav_DEF"
+            android:title="DEF" />
+        <item
+            android:id="@+id/nav_GHI"
+            android:title="GHI" />
+        <item
+            android:id="@+id/nav_JKL"
+            android:title="JKL" />
+        <item
+            android:id="@+id/nav_MNO"
+            android:title="MNO" />
+        <item
+            android:id="@+id/nav_PQR"
+            android:title="PQR" />
+        <item
+            android:id="@+id/nav_STU"
+            android:title="STU" />
+        <item
+            android:id="@+id/nav_VWX"
+            android:title="PQR" />
+        <item
+            android:id="@+id/nav_YZ"
+            android:title="Z" />
+    </group>
+
+</menu>

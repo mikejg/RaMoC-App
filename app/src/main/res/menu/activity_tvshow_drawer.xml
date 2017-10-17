@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/nav_TVShow_group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_TVShow_Play"
+            android:icon="@drawable/play"
+            android:title="Play" />
+        <item
+            android:id="@+id/nav_TVShow_Stop"
+            android:icon="@drawable/stop"
+            android:title="Stop" />
+    </group>
+
+    <group android:id="@+id/nav_TVShow_group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_TVShow_forward"
+            android:icon="@drawable/forward"
+            android:title="Vorspulen" />
+        <item
+            android:id="@+id/nav_TVShow_backward"
+            android:icon="@drawable/backward"
+            android:title="Rückspulen" />
+    </group>
+
+    <group android:id="@+id/nav_TVShow_group3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_TVShow_10Min_forward"
+            android:icon="@drawable/forward"
+            android:title="10 Minuten vor" />
+        <item
+            android:id="@+id/nav_TVShow_10Min_backward"
+            android:icon="@drawable/backward"
+            android:title="10 Minuten zurück" />
+    </group>
+
+    <group android:id="@+id/nav_TVShow_group4"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_TVShow_Actor"
+            android:icon="@drawable/actor"
+            android:title="Darsteller " />
+        <item
+            android:id="@+id/nav_TVShow_Episoden"
+            android:icon="@drawable/episodenlist"
+            android:title="Episoden " />
+
+        <item
+            android:id="@+id/nav_TVShow_Archive"
+            android:icon="@drawable/archive"
+            android:title="Archiv" />
+    </group>
+
+    <group android:id="@+id/nav_TVShow_group5"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_TVShow_Subtitle"
+            android:icon="@drawable/subtitle"
+            android:title="Untertitel" />
+        <item
+            android:id="@+id/nav_TVShow_Next_Subtitle"
+            android:icon="@drawable/next_subtitle"
+            android:title="Untertitel vor " />
+
+        <item
+            android:id="@+id/nav_TVShow_Prev_Subtitle"
+            android:icon="@drawable/prev_subtitle"
+            android:title="Untertitel zurück" />
+    </group>
+</menu>

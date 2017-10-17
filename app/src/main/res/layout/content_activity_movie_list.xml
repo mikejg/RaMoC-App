@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_activity__movie_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="org.gareiss.mike.ramoc.movie.Activity_MovieList"
+    tools:showIn="@layout/app_bar_activity_movie_list">
+
+    <ImageView
+        android:id="@+id/movieList_ImageView_Background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/wallpaper"
+        android:layout_marginBottom="190dp"
+        android:layout_marginTop="30dp" />
+
+    <EditText android:inputType="textMultiLine|textNoSuggestions"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/movieList_EditText"
+        android:layout_alignParentBottom="true"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/movieList_ListView"
+        android:layout_width="fill_parent"
+        android:layout_centerVertical="true"
+        android:layout_height="290dp"
+        android:layout_above="@id/movieList_EditText"
+        android:orientation="horizontal"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        />
+    <!--
+    <com.devsmart.android.ui.HorizontalListView
+        android:id="@+id/movieList_ListView"
+        android:layout_width="fill_parent"
+        android:layout_centerVertical="true"
+        android:layout_height="290dp"
+        android:layout_above="@id/movieList_EditText"
+        />
+     -->
+</RelativeLayout>
