@@ -205,6 +205,5 @@ public class Utils
             failed_reason.setVisibility(View.GONE);
         }
     }
-
 }
 

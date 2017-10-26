@@ -214,6 +214,16 @@ public class Activity_Music extends AppCompatActivity
         }
     }
 
+    public void button_Edit_Click(View view)
+    {
+        Intent myIntent = new Intent(getApplicationContext(), Dialog_Edit_ID3Tag.class);
+        myIntent.putExtra("Title",currentTrack.titel);
+        myIntent.putExtra("Album", currentTrack.album);
+        myIntent.putExtra("Interpret", currentTrack.artist);
+        myIntent.putExtra("ramocID", currentTrack.ramocId);
+        startActivity(myIntent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {

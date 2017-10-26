@@ -57,6 +57,15 @@
                 android:layout_weight="1"
                 android:layout_gravity="center_horizontal"
                 android:onClick="button_Fav_Click" />
+            <Button
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/toolbar_edit"
+                android:id="@+id/edit_ID3Tag"
+                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:onClick="button_Edit_Click" />
        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 

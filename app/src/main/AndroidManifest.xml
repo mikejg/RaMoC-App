@@ -114,6 +114,10 @@
             android:name=".tv.Dialog2015"
             android:label="@string/title_activity_dialog2015"
             android:theme="@style/mDialog" />
+        <activity
+            android:name=".music.Dialog_Edit_ID3Tag"
+            android:label="@string/title_activity_dialog__edit__id3_tag"
+            android:theme="@style/mDialog" />
     </application>
 
 </manifest>

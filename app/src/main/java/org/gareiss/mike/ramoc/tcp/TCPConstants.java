@@ -41,4 +41,5 @@ public class TCPConstants
     public static final String setSampler           = "111";
     public static final String getSampler           = "112";
     public static final String playerStarted              = "999";
+    public static final String setID3Tag            = "113";
 }
