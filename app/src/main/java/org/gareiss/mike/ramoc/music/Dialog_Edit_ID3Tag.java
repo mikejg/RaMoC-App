@@ -17,9 +17,11 @@ import android.widget.TextView;
 import org.gareiss.mike.ramoc.R;
 import org.gareiss.mike.ramoc.RaMoCApplication;
 import org.gareiss.mike.ramoc.tcp.TCPConstants;
+import org.gareiss.mike.ramoc.tcp.TCPListener;
 import org.gareiss.mike.ramoc.tcp.TCPService;
 
 public class Dialog_Edit_ID3Tag extends AppCompatActivity
+    implements TCPListener
 {
 
     private EditText editText_Title;
@@ -59,6 +61,8 @@ public class Dialog_Edit_ID3Tag extends AppCompatActivity
             editText_Interpret.setText(extras.getString("Interpret"));
             ramocID = extras.getString("ramocID");
         }
+
+        ramocApp.addTCPListener(this);
     }
 
     public void button_Click(View view)
@@ -69,8 +73,8 @@ public class Dialog_Edit_ID3Tag extends AppCompatActivity
 
         String settings = ramocID + "|" + title + "|" + album +"|" + interpret;
         startIntent(TCPConstants.setID3Tag + "|" + settings );
-        finish();
     }
+
     public class OnEditorActionListener implements EditText.OnEditorActionListener {
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -88,5 +92,14 @@ public class Dialog_Edit_ID3Tag extends AppCompatActivity
         tcpIntent.setAction(TCPService.ACTION_SEND);
         tcpIntent.putExtra("String", str +  "\n");
         startService(tcpIntent);
+    }
+
+    public void onTCPMessage(String tcpString)
+    {
+        if(tcpString.startsWith(TCPConstants.finishID3Tag))
+        {
+            ramocApp.delTCPListener(this);
+            finish();
+        }
     }
 }

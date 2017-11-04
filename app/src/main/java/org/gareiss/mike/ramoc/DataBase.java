@@ -40,8 +40,8 @@ public class DataBase
 {
     private String TAG = "DataBase";
 
-    private String string_IP;
     private String stringResult;
+    private String string_IP;
 
     private Context                     context;
     private ArrayList<NameValuePair>    nameValuePairs;
@@ -118,6 +118,7 @@ public class DataBase
         startConnection("http://" + string_IP + "/getGenre.php");
         return getData();
     }
+
     public ArrayList<String> getProposal(String title)
     {
         String str;

@@ -26,6 +26,7 @@ public class TCPConstants
     public static final String toogleSubtitle       = "023";
     public static final String nextSubtitle         = "024";
     public static final String prevSubtitle         = "025";
+    public static final String playYoutube          = "026";
 
     public static final String ArtistAlben          = "100";
     public static final String nextArtistAlben      = "101";
@@ -42,4 +43,5 @@ public class TCPConstants
     public static final String getSampler           = "112";
     public static final String playerStarted              = "999";
     public static final String setID3Tag            = "113";
+    public static final String finishID3Tag         = "114";
 }

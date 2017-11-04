@@ -56,5 +56,6 @@
     <string name="title_activity_dialog__smb">SMB</string>
     <string name="title_activity_dialog2015">Prime Time 20:15</string>
     <string name="title_activity_dialog__edit__id3_tag">Edit ID3Tag</string>
+    <string name="title_activity__youtube">Youtube</string>
 
 </resources>

@@ -118,6 +118,10 @@
             android:name=".music.Dialog_Edit_ID3Tag"
             android:label="@string/title_activity_dialog__edit__id3_tag"
             android:theme="@style/mDialog" />
+        <activity
+            android:name=".youtube.Activity_Youtube"
+            android:label="@string/title_activity__youtube"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

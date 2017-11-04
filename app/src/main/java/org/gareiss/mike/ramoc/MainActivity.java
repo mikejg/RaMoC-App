@@ -22,6 +22,7 @@ import org.gareiss.mike.ramoc.tcp.TCPListener;
 import org.gareiss.mike.ramoc.tcp.TCPService;
 import org.gareiss.mike.ramoc.tv.Activity_TV;
 import org.gareiss.mike.ramoc.tvshow.Activity_TVShowList;
+import org.gareiss.mike.ramoc.youtube.Activity_Youtube;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -195,6 +196,12 @@ public class MainActivity extends AppCompatActivity
     public void button_Music_Click(View view)
     {
         mIntent = new Intent(getApplicationContext(), Activity_Music.class);
+        startActivity(mIntent);
+    }
+
+    public void button_Youtube_Click(View view)
+    {
+        mIntent = new Intent(getApplicationContext(), Activity_Youtube.class);
         startActivity(mIntent);
     }
 
