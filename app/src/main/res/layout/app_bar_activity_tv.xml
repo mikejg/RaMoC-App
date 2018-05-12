@@ -37,6 +37,15 @@
                 android:layout_weight="1"
                 android:layout_gravity="center_horizontal"
                 android:onClick="button_Play_Click" />
+            <Button
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/toolbar_stop"
+                android:id="@+id/mute"
+                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:onClick="button_Mute_Click" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 

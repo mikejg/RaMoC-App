@@ -18,13 +18,13 @@
         <item
             android:id="@+id/nav_Movie_forward"
             android:icon="@drawable/forward"
-            android:title="Vorspulen" />
+            android:title="Faster" />
         <item
             android:id="@+id/nav_Movie_backward"
             android:icon="@drawable/backward"
-            android:title="Rückspulen" />
+            android:title="Slower" />
     </group>
-
+<!--
     <group android:id="@+id/nav_Movie_group3"
         android:checkableBehavior="single">
         <item
@@ -36,9 +36,13 @@
             android:icon="@drawable/backward"
             android:title="10 Minuten zurück" />
     </group>
-
+-->
     <group android:id="@+id/nav_Movie_group4"
         android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Movie_Subtitle"
+            android:icon="@drawable/subtitle"
+            android:title="Untertitel" />
         <item
             android:id="@+id/nav_Movie_Actor"
             android:icon="@drawable/actor"

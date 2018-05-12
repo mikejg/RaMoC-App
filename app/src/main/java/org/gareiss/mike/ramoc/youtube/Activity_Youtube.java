@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.support.design.widget.NavigationView;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,9 +43,13 @@ public class Activity_Youtube extends AppCompatActivity
     private EditText editText;
     private YoutubeAPI youtube;
     private AsyncTask_Youtube asyncTask_Youtube;
+    private AsyncTask_Proposal asyncTask_Proposal;
     private ArrayList<Youtube> arrayList_Youtube;
+    private ArrayList<String> arrayList_Proposal;
     private ListView listView;
+    private ListView listView_Proposal;
     private Adapter_Youtube adapter_Youtube;
+    ArrayAdapter<String> adapter_Proposal;
 
     private RaMoCApplication ramocApp;
     private Intent tcpIntent;
@@ -67,8 +74,39 @@ public class Activity_Youtube extends AppCompatActivity
         ramocApp = (RaMoCApplication) getApplicationContext();
         tcpIntent = ramocApp.getTcpIntent();
 
+        asyncTask_Proposal = null;
+
         editText = (EditText) findViewById(R.id.editText);
         editText.setOnEditorActionListener(new OnEditorActionListener());
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                listView_Proposal.setVisibility(View.VISIBLE);
+                if(asyncTask_Proposal == null)
+                {
+                    asyncTask_Proposal = new AsyncTask_Proposal();
+                    asyncTask_Proposal.execute(editText.getText().toString());
+                }
+                else if (asyncTask_Proposal.getStatus() != AsyncTask.Status.RUNNING)
+                {
+                    Log.e(TAG, "New Asynctask_Proposal: " + editText.getText().toString());
+
+                    asyncTask_Proposal = new AsyncTask_Proposal();
+                    asyncTask_Proposal.execute(editText.getText().toString());
+                }
+            }
+        });
 
         listView = (ListView) findViewById(R.id.listView);
 
@@ -82,6 +120,22 @@ public class Activity_Youtube extends AppCompatActivity
                 Youtube yt = (Youtube) o;
 
                 startIntent(TCPConstants.playYoutube + "|" + yt.video_Url);
+            }
+        });
+
+        listView_Proposal = (ListView) findViewById(R.id.listView_Proposal);
+        listView_Proposal.setVisibility(View.GONE);
+        listView_Proposal.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Object o = listView_Proposal.getItemAtPosition(position);
+                String value = (String) o;
+                Log.i(TAG, value);
+
+                editText.setText(value);
             }
         });
         youtube = new YoutubeAPI();
@@ -152,13 +206,17 @@ public class Activity_Youtube extends AppCompatActivity
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
         {
-            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE))
+            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) ||
+                    (actionId == EditorInfo.IME_ACTION_DONE))
             {
-                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) v.getContext().
+                                                                getSystemService(
+                                                                Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                 asyncTask_Youtube = new_AsyncTask_Youtube();
                 asyncTask_Youtube.execute(editText.getText().toString());
+                listView_Proposal.setVisibility(View.GONE);
                 return true;
             }
             return false;
@@ -171,6 +229,13 @@ public class Activity_Youtube extends AppCompatActivity
         listView.setAdapter(adapter_Youtube);
 
     }
+
+    private void setProposalAdapter()
+    {
+        adapter_Proposal = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList_Proposal);
+        listView_Proposal.setAdapter(adapter_Proposal);
+    }
+
     private class AsyncTask_Youtube extends AsyncTask<String, Void, Void>
     {
         /** progress dialog to show user that the backup is processing. */
@@ -208,6 +273,38 @@ public class Activity_Youtube extends AppCompatActivity
         protected void onPreExecute() {
             this.dialog.setMessage("Load");
             this.dialog.show();
+        }
+    }
+
+    private class AsyncTask_Proposal extends AsyncTask<String, Void, Void>
+    {
+        /** progress dialog to show user that the backup is processing. */
+        private ProgressDialog dialog;
+        private ArrayList<String> arrayList;
+
+        /** application context. */
+        @SuppressWarnings("unused")
+
+        public AsyncTask_Proposal()
+        {
+        }
+
+        @Override
+        protected Void doInBackground(String... params)
+        {
+            Log.i(TAG, "AsyncTask_Proposal doInBackground");
+            arrayList_Proposal = youtube.search_Proposal(params[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result)
+        {
+            setProposalAdapter();
+        }
+
+        @Override
+        protected void onPreExecute() {
         }
     }
 

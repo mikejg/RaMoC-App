@@ -9,5 +9,6 @@ public class Track
     public String albumId;
     public String favorite;
     public String sampler;
+    public String position;
 }
 

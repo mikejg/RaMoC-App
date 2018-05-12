@@ -39,6 +39,7 @@ import org.gareiss.mike.ramoc.model.Actor;
 import org.gareiss.mike.ramoc.model.Movie;
 import org.gareiss.mike.ramoc.model.TVShow;
 import org.gareiss.mike.ramoc.movie.Adapter_ActorList;
+import org.gareiss.mike.ramoc.movie.Dialog_Subtitle;
 import org.gareiss.mike.ramoc.tcp.TCPConstants;
 import org.gareiss.mike.ramoc.tcp.TCPListener;
 import org.gareiss.mike.ramoc.tcp.TCPService;
@@ -306,20 +307,6 @@ public class Activity_TVShow extends AppCompatActivity
             startService(tcpIntent);
         }
 
-        if (id == R.id.nav_TVShow_10Min_backward)
-        {
-            tcpIntent.setAction(TCPService.ACTION_SEND);
-            tcpIntent.putExtra("String", TCPConstants.minutesBackward +  "\n");
-            startService(tcpIntent);
-        }
-
-        if (id == R.id.nav_TVShow_10Min_forward)
-        {
-            tcpIntent.setAction(TCPService.ACTION_SEND);
-            tcpIntent.putExtra("String", TCPConstants.minutesForward +  "\n");
-            startService(tcpIntent);
-        }
-
         if(id == R.id.nav_TVShow_Archive)
         {
             tcpIntent.setAction(TCPService.ACTION_SEND);
@@ -333,24 +320,12 @@ public class Activity_TVShow extends AppCompatActivity
 
         if(id == R.id.nav_TVShow_Subtitle)
         {
+
+            Intent myIntent = new Intent(getApplicationContext(), Dialog_Subtitle.class);
+            startActivity(myIntent);
             tcpIntent.setAction(TCPService.ACTION_SEND);
-            tcpIntent.putExtra("String", TCPConstants.toogleSubtitle +  "\n");
-            startService(tcpIntent);
         }
 
-        if(id == R.id.nav_TVShow_Next_Subtitle)
-        {
-            tcpIntent.setAction(TCPService.ACTION_SEND);
-            tcpIntent.putExtra("String", TCPConstants.nextSubtitle +  "\n");
-            startService(tcpIntent);
-        }
-
-        if(id == R.id.nav_TVShow_Prev_Subtitle)
-        {
-            tcpIntent.setAction(TCPService.ACTION_SEND);
-            tcpIntent.putExtra("String", TCPConstants.prevSubtitle +  "\n");
-            startService(tcpIntent);
-        }
         return true;
     }
 

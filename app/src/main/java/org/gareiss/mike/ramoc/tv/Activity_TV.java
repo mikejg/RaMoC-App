@@ -135,6 +135,10 @@ public class Activity_TV extends AppCompatActivity
         password = array_str[2];
         connect(false);
         setLoading(ramocApp.isLoading());
+
+        tcpIntent.setAction(TCPService.ACTION_SEND);
+        tcpIntent.putExtra("String", TCPConstants.bell +  "\n");
+        startService(tcpIntent);
     }
 
     @Override
@@ -188,6 +192,12 @@ public class Activity_TV extends AppCompatActivity
         startService(tcpIntent);
     }
 
+    public void button_Mute_Click(View view)
+    {
+        tcpIntent.setAction(TCPService.ACTION_SEND);
+        tcpIntent.putExtra("String", TCPConstants.mute +  "\n");
+        startService(tcpIntent);
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
