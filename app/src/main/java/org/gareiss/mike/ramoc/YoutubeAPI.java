@@ -46,8 +46,7 @@ public class YoutubeAPI
     {
         String response;
         keyWord = keyWord.replace(" ", "%20");
-        //String url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=Goethes%20Erben&type=video&key=AIzaSyBe3KeO4jXAOT4VL_Z6u31v2ORdH3RnG0M";
-        String url_Completion = "search?part=snippet&q="
+        String url_Completion = "search?part=snippet&maxResults=10&q="
                               + keyWord
                               + "&type=video&key="
                               + apiKey;
@@ -89,12 +88,13 @@ public class YoutubeAPI
                                                  .getString("url");
                 youtube.image = loadImage(youtube.image_Url);
 
+                /*
                 Log.d(TAG, youtube.title);
                 Log.d(TAG, youtube.channel_Title);
                 Log.d(TAG, youtube.description);
                 Log.d(TAG, youtube.image_Url);
                 Log.d(TAG, youtube.video_Url);
-
+                */
                 arrayList_Youtube.add(youtube);
             }
         } catch (JSONException e) {
@@ -102,6 +102,46 @@ public class YoutubeAPI
         }
 
         return arrayList_Youtube;
+    }
+
+    public ArrayList<String> search_Proposal(String keyWord)
+    {
+        String response;
+        String proposal;
+        keyWord = keyWord.replace(" ", "%20");
+        //String url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=Goethes%20Erben&type=video&key=AIzaSyBe3KeO4jXAOT4VL_Z6u31v2ORdH3RnG0M";
+        String url_Completion = "search?part=snippet&maxResults=5&q="
+                + keyWord
+                + "&type=video&key="
+                + apiKey;
+
+        ArrayList<String> arrayList_Proposal = new ArrayList<>();
+        response = startConnection(url_Completion);
+
+        JSONObject responseJSON= null;
+        try {
+            responseJSON = new JSONObject(response);
+
+            JSONArray items = responseJSON.getJSONArray("items");
+
+
+            for(int i=0;i<items.length();i++)
+            {
+                proposal = new String();
+                 proposal= items.getJSONObject(i)
+                        .getJSONObject("snippet")
+                        .getString("title");
+
+
+                Log.d(TAG, proposal);
+
+                arrayList_Proposal.add(proposal);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return arrayList_Proposal;
     }
 
     public String startConnection(String completion)
@@ -128,7 +168,7 @@ public class YoutubeAPI
             {
                 content += line;
             }
-            Log.d(TAG, content);
+            //Log.d(TAG, content);
         }
 
         catch(IOException e)
@@ -143,7 +183,7 @@ public class YoutubeAPI
     {
         Bitmap bitmap_Cover = null;
 
-        Log.i(TAG, url);
+        //Log.i(TAG, url);
         try {
             InputStream in = new java.net.URL(url).openStream();
             bitmap_Cover = BitmapFactory.decodeStream(in);

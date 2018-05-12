@@ -450,6 +450,7 @@ public class RaMoCApplication extends Application
                 state = STATE_PLAYING;
                 Log.i(TAG, "state = STATE_PLAYING");
             }
+
             for (TCPListener l : tcpListeners)
             {
                 l.onTCPMessage(str);

@@ -121,7 +121,11 @@
         <activity
             android:name=".youtube.Activity_Youtube"
             android:label="@string/title_activity__youtube"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".movie.Dialog_Subtitle"
+            android:label="@string/title_activity_dialog__subtitle"
+            android:theme="@style/mDialog"></activity>
     </application>
 
 </manifest>

@@ -137,7 +137,7 @@ public class Activity_Music extends AppCompatActivity
                 //adapter_Playlist.setSelectedIndex(position);
                 Object o = listView_Playlist.getItemAtPosition(position);
                 currentTrack = (Track) o;
-
+                currentTrack.position = Integer.toString(position);
                 startIntent(TCPConstants.playTrack + "|" + Integer.toString(position));
             }
         });
@@ -154,6 +154,7 @@ public class Activity_Music extends AppCompatActivity
 
         startIntent(TCPConstants.sendPlaylist);
     }
+
     @Override
     public void onBackPressed()
     {
@@ -171,9 +172,10 @@ public class Activity_Music extends AppCompatActivity
         if(currentTrack == null)
             return;
 
-        tcpIntent.setAction(TCPService.ACTION_SEND);
-        tcpIntent.putExtra("String", TCPConstants.play + currentTrack.path + "\n");
-        startService(tcpIntent);
+        startIntent(TCPConstants.playTrack + "|" + currentTrack.position);
+        //tcpIntent.setAction(TCPService.ACTION_SEND);
+        //tcpIntent.putExtra("String", TCPConstants.play + currentTrack.path + "\n");
+        //startService(tcpIntent);
     }
 
     public void button_Stop_Click(View view)
@@ -373,7 +375,7 @@ public class Activity_Music extends AppCompatActivity
     @Override
     public void onTCPMessage(final String tcpString)
     {
-        //Log.i(TAG + " onTCPMessage", tcpString);
+        Log.i(TAG + " onTCPMessage", tcpString);
         tmp = tcpString.split("\\|");
         if(tcpString.startsWith(TCPConstants.ArtistAlben) && tmp.length > 2)
         {
