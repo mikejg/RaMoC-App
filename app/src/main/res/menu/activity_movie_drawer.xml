@@ -24,7 +24,7 @@
             android:icon="@drawable/backward"
             android:title="Slower" />
     </group>
-<!--
+
     <group android:id="@+id/nav_Movie_group3"
         android:checkableBehavior="single">
         <item
@@ -36,9 +36,13 @@
             android:icon="@drawable/backward"
             android:title="10 Minuten zurück" />
     </group>
--->
+
     <group android:id="@+id/nav_Movie_group4"
         android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Movie_Audio"
+            android:icon="@drawable/subtitle"
+            android:title="Audiospur" />
         <item
             android:id="@+id/nav_Movie_Subtitle"
             android:icon="@drawable/subtitle"

@@ -125,7 +125,11 @@
         <activity
             android:name=".movie.Dialog_Subtitle"
             android:label="@string/title_activity_dialog__subtitle"
-            android:theme="@style/mDialog"></activity>
+            android:theme="@style/mDialog" />
+        <activity
+            android:name=".movie.Dialog_Audio"
+            android:label="Audio"
+            android:theme="@style/mDialog" />
     </application>
 
 </manifest>

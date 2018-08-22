@@ -54,6 +54,10 @@
             android:id="@+id/nav_TVShow_Archive"
             android:icon="@drawable/archive"
             android:title="Archiv" />
+        <item
+            android:id="@+id/nav_TVShow_Delete"
+            android:icon="@drawable/delete"
+            android:title="Löschen" />
     </group>
 
     <group android:id="@+id/nav_TVShow_group5"

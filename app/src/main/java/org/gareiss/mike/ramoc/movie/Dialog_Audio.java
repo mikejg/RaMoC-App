@@ -1,8 +1,8 @@
 package org.gareiss.mike.ramoc.movie;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -21,25 +21,23 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Dialog_Subtitle extends AppCompatActivity implements TCPListener
-
+public class Dialog_Audio extends AppCompatActivity implements TCPListener
 {
 
     ListView listView;
     ArrayAdapter<String> adapter;
     ArrayList<String> array;
-    String TAG = "Dialog Subtitle";
+    String TAG = "Dialog Audio";
 
-    private Intent              tcpIntent;
+    private Intent tcpIntent;
     private JSONObject json_data;
     private RaMoCApplication ramocApp;
     public String[] tmp;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_subtitle);
+        setContentView(R.layout.dialog_audio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,7 +59,7 @@ public class Dialog_Subtitle extends AppCompatActivity implements TCPListener
                 Log.i(TAG, value);
 
                 tcpIntent.setAction(TCPService.ACTION_SEND);
-                tcpIntent.putExtra("String", "028|" + value.charAt(0)+  "\n");
+                tcpIntent.putExtra("String", "030|" + value.charAt(0)+  "\n");
                 startService(tcpIntent);
                 finish();
             }
@@ -70,14 +68,13 @@ public class Dialog_Subtitle extends AppCompatActivity implements TCPListener
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array);
         listView.setAdapter(adapter);
     }
-
     @Override
     public void onResume()
     {
         super.onResume();
 
         tcpIntent.setAction(TCPService.ACTION_SEND);
-        tcpIntent.putExtra("String", TCPConstants.getSubtitle + "\n");
+        tcpIntent.putExtra("String", TCPConstants.getAudio + "\n");
         startService(tcpIntent);
     }
 
@@ -106,7 +103,7 @@ public class Dialog_Subtitle extends AppCompatActivity implements TCPListener
     public void onTCPMessage(String tcpString)
     {
         Log.i(TAG, tcpString);
-        if(!tcpString.startsWith(TCPConstants.getSubtitle)) {
+        if(!tcpString.startsWith(TCPConstants.getAudio)) {
 
             return;
         }

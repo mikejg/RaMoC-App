@@ -2,6 +2,7 @@ package org.gareiss.mike.ramoc;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Log;
 
 import org.apache.http.HttpResponse;
@@ -18,6 +19,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import org.apache.http.client.methods.HttpGet;
@@ -37,15 +40,64 @@ public class YoutubeAPI
     private InputStream inputstream;
     HttpURLConnection connection;
     private Youtube youtube;
+    private URI uri;
 
-    void Youtube()
+    void YoutubeAPI()
     {
+    }
+
+    public void loadStatistic()
+
+    {
+        youtube.viewCount = "0";
+        youtube.likeCount = "0";
+        youtube.dislikeCount = "0";
+
+        String response;
+        String url_Completion = "videos?part=statistics&id="
+                + youtube.video_ID
+                + "&key="
+                + apiKey;
+
+        response = startConnection(url_Completion);
+
+        JSONObject responseJSON= null;
+        try {
+            responseJSON = new JSONObject(response);
+
+            JSONArray items = responseJSON.getJSONArray("items");
+
+
+            for(int i=0;i<items.length();i++)
+            {
+
+                youtube.viewCount = items.getJSONObject(i)
+                        .getJSONObject("statistics")
+                        .getString("viewCount");
+
+                youtube.likeCount = items.getJSONObject(i)
+                        .getJSONObject("statistics")
+                        .getString("likeCount");
+
+                youtube.dislikeCount = items.getJSONObject(i)
+                        .getJSONObject("statistics")
+                        .getString("dislikeCount");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public ArrayList<Youtube> search_By_Keyword(String keyWord)
     {
         String response;
         keyWord = keyWord.replace(" ", "%20");
+        //uri = URI.create(keyWord);
+        //keyWord = uri.toString();
+        keyWord = keyWord.replace("|", "%7C");
+        keyWord = keyWord.replace("'", "%27");
+
         String url_Completion = "search?part=snippet&maxResults=10&q="
                               + keyWord
                               + "&type=video&key="
@@ -81,20 +133,31 @@ public class YoutubeAPI
                                           .getJSONObject("id")
                                           .getString("videoId");
 
+                youtube.video_ID = items.getJSONObject(i)
+                        .getJSONObject("id")
+                        .getString("videoId");
+
                 youtube.image_Url = items.getJSONObject(i)
                                                  .getJSONObject("snippet")
                                                  .getJSONObject("thumbnails")
                                                  .getJSONObject("medium")
                                                  .getString("url");
                 youtube.image = loadImage(youtube.image_Url);
+                loadStatistic();
 
-                /*
-                Log.d(TAG, youtube.title);
-                Log.d(TAG, youtube.channel_Title);
-                Log.d(TAG, youtube.description);
-                Log.d(TAG, youtube.image_Url);
-                Log.d(TAG, youtube.video_Url);
-                */
+                youtube.statistic = youtube.channel_Title + " | " +
+                                    youtube.viewCount + " Views | " +
+                                    youtube.likeCount + " Likes | " +
+                                    youtube.dislikeCount + " Dislikes";
+
+                Log.d(TAG, "Title:         " + youtube.title);
+                Log.d(TAG, "Channel Title: " + youtube.channel_Title);
+                Log.d(TAG, "Description:   " + youtube.description);
+                Log.d(TAG, "Image Url:     " + youtube.image_Url);
+                Log.d(TAG, "Video Url:     " + youtube.video_Url);
+                Log.d(TAG, "Video Id:      " + youtube.video_ID);
+                Log.d(TAG, "ViewCount:     " + youtube.viewCount);
+
                 arrayList_Youtube.add(youtube);
             }
         } catch (JSONException e) {
@@ -104,11 +167,78 @@ public class YoutubeAPI
         return arrayList_Youtube;
     }
 
+    public ArrayList<Youtube> search_Related(String keyWord)
+    {
+        Log.e(TAG, "search_Related: " + keyWord);
+        String response;
+        keyWord = keyWord.replace(" ", "%20");
+        String url_Completion = "search?part=snippet&relatedToVideoId="
+                + keyWord
+                + "&type=video&key="
+                + apiKey;
+
+        ArrayList<Youtube> arrayList_Youtube = new ArrayList<>();
+        response = startConnection(url_Completion);
+
+        JSONObject responseJSON= null;
+        try {
+            responseJSON = new JSONObject(response);
+
+            JSONArray items = responseJSON.getJSONArray("items");
+
+
+            for(int i=0;i<items.length();i++)
+            {
+                youtube = new Youtube();
+                youtube.title = items.getJSONObject(i)
+                        .getJSONObject("snippet")
+                        .getString("title");
+
+                youtube.channel_Title = items.getJSONObject(i)
+                        .getJSONObject("snippet")
+                        .getString("channelTitle");
+
+                youtube.description = items.getJSONObject(i)
+                        .getJSONObject("snippet")
+                        .getString("description");
+
+                youtube.video_Url = "https://www.youtube.com/watch?v="+
+                        items.getJSONObject(i)
+                                .getJSONObject("id")
+                                .getString("videoId");
+
+                youtube.video_ID = items.getJSONObject(i)
+                                .getJSONObject("id")
+                                .getString("videoId");
+                youtube.image_Url = items.getJSONObject(i)
+                        .getJSONObject("snippet")
+                        .getJSONObject("thumbnails")
+                        .getJSONObject("medium")
+                        .getString("url");
+                youtube.image = loadImage(youtube.image_Url);
+
+
+                Log.d(TAG, youtube.title);
+                Log.d(TAG, youtube.channel_Title);
+                Log.d(TAG, youtube.description);
+                Log.d(TAG, youtube.image_Url);
+                Log.d(TAG, youtube.video_Url);
+
+                arrayList_Youtube.add(youtube);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return arrayList_Youtube;
+    }
     public ArrayList<String> search_Proposal(String keyWord)
     {
         String response;
         String proposal;
         keyWord = keyWord.replace(" ", "%20");
+        keyWord = keyWord.replace("'", "%27");
+        keyWord = keyWord.replace("|", "%7C");
         //String url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=Goethes%20Erben&type=video&key=AIzaSyBe3KeO4jXAOT4VL_Z6u31v2ORdH3RnG0M";
         String url_Completion = "search?part=snippet&maxResults=5&q="
                 + keyWord
@@ -146,11 +276,16 @@ public class YoutubeAPI
 
     public String startConnection(String completion)
     {
-        Log.e(TAG, "startConnection");
         String content = "";
 
         String url = "https://www.googleapis.com/youtube/v3/"
                    + completion;
+
+        //uri = URI.create(url);
+        //String validUrl = uri.toASCIIString();
+
+        Log.e(TAG, "startConnection " + url);
+
         HttpClient client = new DefaultHttpClient();
         HttpGet request = new HttpGet(url);
 

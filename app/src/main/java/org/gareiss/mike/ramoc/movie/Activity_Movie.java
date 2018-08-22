@@ -234,7 +234,7 @@ public class Activity_Movie extends AppCompatActivity
             startService(tcpIntent);
         }
 
-     /*   if (id == R.id.nav_Movie_10Min_backward)
+        if (id == R.id.nav_Movie_10Min_backward)
         {
             tcpIntent.setAction(TCPService.ACTION_SEND);
             tcpIntent.putExtra("String", TCPConstants.minutesBackward +  "\n");
@@ -246,7 +246,7 @@ public class Activity_Movie extends AppCompatActivity
 
             startIntent(TCPConstants.minutesForward);
         }
-     */
+     
 
         if (id == R.id.nav_Movie_Actor)
         {
@@ -272,6 +272,12 @@ public class Activity_Movie extends AppCompatActivity
         {
 
             Intent myIntent = new Intent(getApplicationContext(), Dialog_Subtitle.class);
+            startActivity(myIntent);
+        }
+        if(id == R.id.nav_Movie_Audio)
+        {
+
+            Intent myIntent = new Intent(getApplicationContext(), Dialog_Audio.class);
             startActivity(myIntent);
         }
 

@@ -44,6 +44,7 @@ public class Activity_Youtube extends AppCompatActivity
     private YoutubeAPI youtube;
     private AsyncTask_Youtube asyncTask_Youtube;
     private AsyncTask_Proposal asyncTask_Proposal;
+    private AsyncTask_Related  asyncTask_Related;
     private ArrayList<Youtube> arrayList_Youtube;
     private ArrayList<String> arrayList_Proposal;
     private ListView listView;
@@ -75,6 +76,7 @@ public class Activity_Youtube extends AppCompatActivity
         tcpIntent = ramocApp.getTcpIntent();
 
         asyncTask_Proposal = null;
+        asyncTask_Related  = null;
 
         editText = (EditText) findViewById(R.id.editText);
         editText.setOnEditorActionListener(new OnEditorActionListener());
@@ -120,6 +122,12 @@ public class Activity_Youtube extends AppCompatActivity
                 Youtube yt = (Youtube) o;
 
                 startIntent(TCPConstants.playYoutube + "|" + yt.video_Url);
+
+                asyncTask_Youtube = new_AsyncTask_Youtube();
+                asyncTask_Youtube.execute(yt.title);
+
+                asyncTask_Related = new_AsyncTask_Related();
+                asyncTask_Related.execute(yt.video_ID);
             }
         });
 
@@ -150,6 +158,20 @@ public class Activity_Youtube extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void button_Play_Click(View view)
+    {
+        tcpIntent.setAction(TCPService.ACTION_SEND);
+        tcpIntent.putExtra("String", TCPConstants.youtubeToggle + "\n");
+        startService(tcpIntent);
+    }
+
+    public void button_Stop_Click(View view)
+    {
+        tcpIntent.setAction(TCPService.ACTION_SEND);
+        tcpIntent.putExtra("String", TCPConstants.playerStop +  "\n");
+        startService(tcpIntent);
     }
 
     @Override
@@ -225,6 +247,7 @@ public class Activity_Youtube extends AppCompatActivity
 
     private void setAdapter()
     {
+        Log.e(TAG, "setAdapter");
         adapter_Youtube = new Adapter_Youtube(this, arrayList_Youtube);
         listView.setAdapter(adapter_Youtube);
 
@@ -257,6 +280,46 @@ public class Activity_Youtube extends AppCompatActivity
         {
             Log.i(TAG, "doInBackground");
             arrayList_Youtube = youtube.search_By_Keyword(params[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result)
+        {
+            if (dialog.isShowing())
+                dialog.dismiss();
+
+            setAdapter();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            this.dialog.setMessage("Load");
+            this.dialog.show();
+        }
+    }
+
+    private class AsyncTask_Related extends AsyncTask<String, Void, Void>
+    {
+        /** progress dialog to show user that the backup is processing. */
+        private ProgressDialog dialog;
+        private ArrayList<String> arrayList;
+
+        /** application context. */
+        @SuppressWarnings("unused")
+        private Activity activity;
+
+        public AsyncTask_Related(Activity activity)
+        {
+            this.activity = activity;
+            dialog = new ProgressDialog(activity);
+        }
+
+        @Override
+        protected Void doInBackground(String... params)
+        {
+            Log.e(TAG, "doInBackground Related " + params[0]);
+            arrayList_Youtube = youtube.search_Related(params[0]);
             return null;
         }
 
@@ -313,6 +376,10 @@ public class Activity_Youtube extends AppCompatActivity
         return new AsyncTask_Youtube(this);
     }
 
+    public AsyncTask_Related new_AsyncTask_Related()
+    {
+        return new AsyncTask_Related(this);
+    }
     private void startIntent(String str)
     {
         tcpIntent.setAction(TCPService.ACTION_SEND);

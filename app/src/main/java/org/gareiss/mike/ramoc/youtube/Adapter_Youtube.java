@@ -25,6 +25,7 @@ public class Adapter_Youtube extends BaseAdapter
     {
         TextView textView_Title;
         TextView textView_Channel_Title;
+        TextView textView_Description;
         ImageView imageView;
     }
 
@@ -77,6 +78,7 @@ public class Adapter_Youtube extends BaseAdapter
 
             holder.textView_Title = (TextView) convertView.findViewById(R.id.title);
             holder.textView_Channel_Title = (TextView) convertView.findViewById(R.id.channel_Title);
+            holder.textView_Description = (TextView) convertView.findViewById(R.id.description);
             holder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
             convertView.setTag(holder);
         }
@@ -86,7 +88,8 @@ public class Adapter_Youtube extends BaseAdapter
         }
 
         holder.textView_Title.setText(arrayList_Youtube.get(position).title);
-        holder.textView_Channel_Title.setText(arrayList_Youtube.get(position).channel_Title);
+        holder.textView_Channel_Title.setText(arrayList_Youtube.get(position).statistic);
+        holder.textView_Description.setText(arrayList_Youtube.get(position).description);
         holder.imageView.setImageBitmap(arrayList_Youtube.get(position).image);
 
         return convertView;

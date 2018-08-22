@@ -458,6 +458,7 @@ public class DataBase
             JSONArray jArray = new JSONArray(stringResult);
             json_data = jArray.getJSONObject(0);
             movie.setFile(json_data.getString("dateiname"));
+            movie.setFileID(json_data.getString("id"));
         }
 
         catch(JSONException e)

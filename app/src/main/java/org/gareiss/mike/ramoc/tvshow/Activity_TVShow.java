@@ -326,6 +326,22 @@ public class Activity_TVShow extends AppCompatActivity
             tcpIntent.setAction(TCPService.ACTION_SEND);
         }
 
+        if(id == R.id.nav_TVShow_Delete)
+        {
+            tcpIntent.setAction(TCPService.ACTION_SEND);
+            tcpIntent.putExtra("String", TCPConstants.deleteMovie + "|" + tvShow.getId() + "\n");
+            startService(tcpIntent);
+            
+            drawer.closeDrawer(GravityCompat.START);
+            this.finish();
+        }
+
+        if(id == R.id.nav_Movie_Subtitle)
+        {
+
+            Intent myIntent = new Intent(getApplicationContext(), Dialog_Subtitle.class);
+            startActivity(myIntent);
+        }
         return true;
     }
 

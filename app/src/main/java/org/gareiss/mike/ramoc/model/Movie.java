@@ -20,6 +20,7 @@ public class Movie
     private String string_Regie;
     //private String string64_Cover;
     private String string_File;
+    private String string_FileID;
     private String string_FSK;
     private String string_Laufzeit;
     private Bitmap bitmap_Cover;
@@ -76,6 +77,9 @@ public class Movie
 
     public void setFile(String f) { string_File = f; }
     public String getFile() { return string_File; }
+
+    public void setFileID(String f) { string_FileID = f; }
+    public String getFileID() { return string_FileID; }
 
     public void setCover(Bitmap bm) { bitmap_Cover = bm; }
     public void setCover(byte[] byteArray)
